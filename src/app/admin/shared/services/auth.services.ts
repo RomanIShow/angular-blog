@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpErrorResponse} from '@angular/common/http';
-import {FbAuthResponse, User} from '../../interfaces';
+import {FbAuthResponse, User} from '../interfaces';
 import {Observable, Subject, throwError} from 'rxjs';
-import {environment} from '../../../../../environments/environment';
+import {environment} from '../../../../environments/environment';
 import {catchError, tap} from 'rxjs/operators';
 
 @Injectable()
@@ -41,7 +41,6 @@ export class AuthServices {
         break;
       case 'EMAIL_NOT_FOUND':
         this.error$.next('Такой email не найден');
-
         break;
     }
     return throwError(error);
@@ -56,7 +55,6 @@ export class AuthServices {
   }
 
   private setToken(response: FbAuthResponse | null) {
-    console.log(response);
     if (response) {
       const expiresDate = new Date(new Date().getTime() + +response.expiresIn * 1000);
       localStorage.setItem('fb-token', response.idToken);
