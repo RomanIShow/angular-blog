@@ -1,11 +1,11 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpErrorResponse} from '@angular/common/http';
-import {FbAuthResponse, User} from '../interfaces';
+import {FbAuthResponse, User} from '../../../shared/interfaces';
 import {Observable, Subject, throwError} from 'rxjs';
 import {environment} from '../../../../environments/environment';
 import {catchError, tap} from 'rxjs/operators';
 
-@Injectable()
+@Injectable({providedIn: 'root'})
 
 export class AuthServices {
 
@@ -51,6 +51,7 @@ export class AuthServices {
   }
 
   isAuthenticated(): boolean {
+    console.log(!!this.token);
     return !!this.token;
   }
 

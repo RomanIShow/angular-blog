@@ -13,9 +13,6 @@
       <small *ngIf="form.get('title').errors.required">
         Введите название поста
       </small>
-      <small *ngIf="form.get('title').errors.title">
-
-      </small>
     </div>
   </div>
 
@@ -29,7 +26,7 @@
     [ngClass]="{invalid: form.get('author').touched && form.get('author').invalid}"
   >
     <label for="author">Автор поста</label>
-    <input id="author" type="text" formControlName="title">
+    <input id="author" type="text" formControlName="author">
     <div
       *ngIf="form.get('author').touched && form.get('author').invalid"
       class="validation"
@@ -37,16 +34,13 @@
       <small *ngIf="form.get('author').errors.required">
         Введите автора поста
       </small>
-      <small *ngIf="form.get('author').errors.author">
-
-      </small>
     </div>
   </div>
 
   <button
     type="submit"
     class="btn btn-block btn-dark"
-    [disabled]="form.invalid"
+
   >Создать пост</button>
 </form>
 
